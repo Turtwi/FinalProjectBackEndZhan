@@ -9,6 +9,8 @@ class Post(models.Model):
     photo = models.ImageField(upload_to='static/images')
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    category = models.CharField(max_length=255, null=True)
+
 
     class Meta:
         ordering = ['-created_at']

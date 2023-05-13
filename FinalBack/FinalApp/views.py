@@ -3,6 +3,7 @@ import os
 from django.conf import settings
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.shortcuts import render, redirect
 
 from .forms import CreateUser, WriteComment, CreatePost
@@ -88,7 +89,7 @@ def PostCreation(request):
     return render(request, 'CreatePost.html', {'form': form})
 
 
-@login_required
+
 def PostView(request):
     pk = request.GET.get('pk', None)
     post = Post.objects.get(id=pk)
@@ -105,3 +106,10 @@ def PostView(request):
             form = WriteComment()
     return render(request, 'PostView.html', {'form': form, 'post': post, 'comments': Comments})
 
+
+def search_results(request):
+    query = request.GET.get('query')
+    posts = Post.objects.filter(
+        Q(category__icontains=query) | Q(text__icontains=query)
+    )
+    return render(request, 'SearchResult.html', {'posts': posts})
