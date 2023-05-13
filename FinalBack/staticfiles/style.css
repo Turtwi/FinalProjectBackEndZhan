@@ -1,0 +1,129 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.navbar {
+  background-color: #343a40;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.navbar-nav {
+  display: flex;
+  list-style: none;
+}
+
+.nav-item {
+  margin-right: 1rem;
+}
+
+.nav-link {
+  color: #fff;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+}
+.search-form input{
+  width: 300px;
+}
+
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+}
+nav a {
+  margin: 0 10px;
+  font-size: 16px;
+  text-decoration: none;
+  color: inherit;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+form {
+  display: flex;
+  flex-grow: 1;
+  margin-left: auto;
+}
+
+form input[type="text"],
+form button[type="submit"] {
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  padding: 0 20px;
+  font-size: 16px;
+}
+
+form input[type="text"] {
+  width: 300px;
+}
+
+.post-card {
+  margin: 20px auto;
+  width: 600px;
+  height: 200px;
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 4%;
+}
+
+.post-card img {
+  width: 200px;
+  height: 190px;
+  margin: auto;
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+.post-card-text {
+  padding: 20px;
+}
+.post-content{
+  margin: 10px 0 0 20px;
+}
+
