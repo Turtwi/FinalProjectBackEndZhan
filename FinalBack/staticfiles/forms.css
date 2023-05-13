@@ -1,0 +1,10 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container input[type="text"],
+.form-container select {
+  width: 100%;
+  margin-bottom: 10px;
+}
