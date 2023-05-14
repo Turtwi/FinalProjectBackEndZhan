@@ -1,0 +1,47 @@
+:root{
+    --60Color: #5927E5;
+    --30Color: #F1A9FF;
+    --10Color: #362B48;
+
+}
+*{
+    background-color: var(--60Color);
+}
+li{
+    color: var(--10Color);
+    background-color: var(--30Color);
+    list-style: none;
+    width: 100%;
+    height: auto;
+    margin: 10px 30px 10px 0;
+    text-align: center;
+}
+li h1{
+    background-color: var(--30Color);
+}
+form{
+    background-color: var(--30Color);
+    width: 400px;
+    margin: 10% auto auto;
+    border-radius: 5%;
+}
+ul{
+    width: 60%;
+    height: auto;
+    background-color: var(--30Color);
+    margin: 100px auto auto ;
+    border-radius: 5%;
+}
+input{
+    color: black;
+    background-color: var(--30Color);
+}
+a{
+    background-color: var(--30Color);
+}
+p{
+    background-color: var(--30Color);
+    font-size: 13px;
+    margin: 0;
+}
+
