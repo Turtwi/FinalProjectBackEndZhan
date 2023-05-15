@@ -11,7 +11,8 @@ urlpatterns = [
     path('Logout', views.LogoutUser, name='Logout'),
     path('Register', views.register, name='Register'),
     path('CreatePost', views.PostCreation, name='PostCreation'),
-    path('PostView', views.PostView, name='PostView')
+    path('PostView', views.PostView, name='PostView'),
+    path('SearchResult', views.search_results, name='SearchResult')
 
 ]
 

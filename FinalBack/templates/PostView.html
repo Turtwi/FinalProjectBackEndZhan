@@ -1,24 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
-    <title>PostView</title>
-</head>
+    <title>TrainerSite</title>
+      {% load static %}
+    <link rel="stylesheet" href="{% static 'view.css' %}">
+  </head>
 <body>
-    {% load static %}
-    <img style="width: 400px" src="{{ post.photo.url }}"><br>
-    {{ post.text }}
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p}}
-        <input type="submit" value="Comment">
-    </form>
-    {% for i in comments %}
-        {{ i.author.username }}
-        {{ i.text }}
-        {{ i.created_at }}
-        <br>
-        <br>
-    {% endfor %}
-</body>
-</html>
+  <header>
+      <nav class="navbar">
+        <div class="container">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a href="/">CYBERSPORTS.KZ</a>
+            </li>
+            <li class="nav-item">
+              <a href="CreatePost">CREATE POST</a>
+            </li>
+            <form class="search-form" method="GET" action="{% url 'SearchResult' %}">
+              <input type="text" placeholder="Search" aria-label="Search" name="query">
+              <button type="submit">Search</button>
+            </form>
+            {% if not request.user.is_authenticated %}
+              <li class="nav-item">
+                <a href="Login">LOGIN</a>
+              </li>
+              <li class="nav-item">
+                <a href="Register">REGISTRATION</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a href="#">{{ username }}</a>
+              </li>
+              <li class="nav-item">
+                <a href="Logout">LOGOUT</a>
+              </li>
+            {% endif %}
+          </ul>
+         </div>
+      </nav>
+  </header>
+<div class="main-container">
+    <div class="main">
+        <div class="sidel">
+            <div class="img_post">
+                
+            </div>
+        </div>
+        <div class="center">
+            {% load static %}
+            <div class="img">
+                <img src="{{ post.photo.url }}">
+            </div>
+            <div class="post">
+                <p>{{ post.text }}</p>
+            </div>
+            <div class="comment">
+                <form method="post" enctype="multipart/form-data" class="comment-form">
+                    {% csrf_token %}
+                    <div class="input_com">
+                        {% for field in form %}
+                        <div class="form-field">
+                            {{ field }}
+                        </div>
+                        <input class="button" type="submit" value="Send">
+                        {% endfor %}
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="sider">
+            {% for i in comments %}
+                <div class="commentt">
+                    <p>{{ i.author.username }}</p>
+                    <p>{{ i.text }}</p>
+                    <p class="time">{{ i.created_at }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+  
+  
+  <script>
+    function filterPosts(category) {
+      var postCards = document.querySelectorAll('.post-card');
+      for (var i = 0; i < postCards.length; i++) {
+        if (category === 'All' || postCards[i].dataset.category === category) {
+          postCards[i].style.display = 'flex';
+        } else {
+          postCards[i].style.display = 'none';
+        }
+      }
+    }
+  </script>
+  
+  </body>
+  </html>b 

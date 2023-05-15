@@ -4,63 +4,70 @@
     <meta charset="UTF-8">
     <title>TrainerSite</title>
       {% load static %}
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
   </head>
-  <body>
-    <header>
+<body>
+  <header>
       <nav class="navbar">
-        <a class="navbar-brand" href="#">News</a>
+        <div class="container">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="CreatePost">Create Post</a>
+              <a href="#">CYBERSPORTS.KZ</a>
             </li>
-            {% if username is None %}
+            <li class="nav-item">
+              <a href="CreatePost">CREATE POST</a>
+            </li>
+            <form class="search-form" method="GET" action="{% url 'SearchResult' %}">
+              <input type="text" placeholder="Search" aria-label="Search" name="query">
+              <button type="submit">Search</button>
+            </form>
+            {% if not request.user.is_authenticated %}
               <li class="nav-item">
-                <a class="nav-link" href="Login">Login</a>
+                <a href="Login">LOGIN</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="Register">Register</a>
+                <a href="Register">REGISTRATION</a>
               </li>
             {% else %}
               <li class="nav-item">
-                <a class="nav-link" href="#">{{ username }}</a>
+                <a href="#">{{ username }}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="Logout">Logout</a>
+                <a href="Logout">LOGOUT</a>
               </li>
             {% endif %}
           </ul>
-          <form class="search-form" method="GET" action="{% url 'SearchResult' %}">
-            <input type="text" placeholder="Search" aria-label="Search" name="query">
-            <button type="submit">Search</button>
-          </form>
+         </div>
       </nav>
-    </header>
+  </header>
 
+<div class="main-container">
+  <div class="news-nav">
     <button onclick="filterPosts('All')">All</button>
-    <button onclick="filterPosts('State')">State</button>
-    <button onclick="filterPosts('News')">News</button>
-    <button onclick="filterPosts('Review')">Review</button>
+    <button onclick="filterPosts('Teams')">Teams</button>
+    <button onclick="filterPosts('Players')">Players</button>
+    <button onclick="filterPosts('Games')">Games</button>
+  </div>
+  <section class="post-list">
+    {% for i in posts %}
+    <a href="PostView?pk={{ i.id }}" class="read-more">
+      <div class="post-card" data-category="{{ i.category }}">
+        <div class="post-img">
+          <img src="{{ i.photo.url }}" alt="Post Image">
+        </div>
+        <div class="post-content">
+          <span class="post-category">{{ i.category }}</span>
+          <h2 class="post-title">
+            <a href="PostView?pk={{ i.id }}">{{ i.text }}</a>
+          </h2>
+          <div class="post-meta">{{ i.created_at}}</div>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </section>
+</div>
 
-    <main>
-      <section class="post-list">
-        {% for i in posts %}
-          <div class="post-card" data-category="{{ i.category }}">
-            <div class="post-img">
-              <img src="{{ i.photo.url }}" alt="Post Image">
-            </div>
-            <div class="post-content">
-              <span class="post-category">{{ i.category }}</span>
-              <h2 class="post-title">
-                <a href="PostView?pk={{ i.id }}">{{ i.text }}</a>
-              </h2>
-              <div class="post-meta">{{ i.created_at}}</div>
-              <a href="PostView?pk={{ i.id }}" class="read-more">Continue reading</a>
-            </div>
-          </div>
-        {% endfor %}
-      </section>
-    </main>
 
 <script>
   function filterPosts(category) {
@@ -75,6 +82,6 @@
   }
 </script>
 
-  </body>
+</body>
 </html>
 
