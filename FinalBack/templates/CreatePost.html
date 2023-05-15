@@ -1,14 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
-    <title>PostCreation</title>
-</head>
+    <title>TrainerSite</title>
+      {% load static %}
+    <link rel="stylesheet" href="{% static 'create.css' %}">
+  </head>
 <body>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p}}
-        <input type="submit" value="Create">
-    </form>
-</body>
-</html>
+  <header>
+      <nav class="navbar">
+        <div class="container">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a href="/">CYBERSPORTS.KZ</a>
+            </li>
+            <li class="nav-item">
+              <a href="CreatePost">CREATE POST</a>
+            </li>
+            <form class="search-form" method="GET" action="{% url 'SearchResult' %}">
+              <input type="text" placeholder="Search" aria-label="Search" name="query">
+              <button type="submit">Search</button>
+            </form>
+            {% if username is None %}
+              <li class="nav-item">
+                <a href="Login">LOGIN</a>
+              </li>
+              <li class="nav-item">
+                <a href="Register">REGISTRATION</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a href="#">{{ username }}</a>
+              </li>
+              <li class="nav-item">
+                <a href="Logout">LOGOUT</a>
+              </li>
+            {% endif %}
+          </ul>
+         </div>
+      </nav>
+  </header>
+<div class="main-container">
+    <div class="main">
+        <div class="center">
+          <form method="post" enctype="multipart/form-data" >
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-field">
+                  {{ field }}
+                </div>
+            {% endfor %}
+            <div class="button">
+              <input type="submit" value="Create">
+            </div>
+          </form>
+      </div>
+    </div>
+</div>
+  
+  
+  <script>
+    function filterPosts(category) {
+      var postCards = document.querySelectorAll('.post-card');
+      for (var i = 0; i < postCards.length; i++) {
+        if (category === 'All' || postCards[i].dataset.category === category) {
+          postCards[i].style.display = 'flex';
+        } else {
+          postCards[i].style.display = 'none';
+        }
+      }
+    }
+  </script>
+  
+  </body>
+  </html>
