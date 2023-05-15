@@ -13,7 +13,11 @@ class CreateUser(UserCreationForm):
 class CreatePost(forms.ModelForm):
     class Meta:
         model = Post
+<<<<<<< Updated upstream
         fields = ['photo', 'text']
+=======
+        fields = ['photo', 'category','text']
+>>>>>>> Stashed changes
 
 
 class WriteComment(forms.ModelForm):
