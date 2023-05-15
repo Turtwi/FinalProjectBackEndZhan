@@ -30,7 +30,7 @@
               </li>
             {% else %}
               <li class="nav-item">
-                <a href="#">{{ username }}</a>
+                <a href="#">{{ request.user.username}}</a>
               </li>
               <li class="nav-item">
                 <a href="Logout">LOGOUT</a>

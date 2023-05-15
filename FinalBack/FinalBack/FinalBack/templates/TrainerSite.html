@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>TrainerSite</title>
+      {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <a class="navbar-brand" href="#">News</a>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="CreatePost">Create Post</a>
+            </li>
+            {% if username is None %}
+              <li class="nav-item">
+                <a class="nav-link" href="Login">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Register">Register</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="#">{{ username }}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Logout">Logout</a>
+              </li>
+            {% endif %}
+          </ul>
+          <form class="search-form" method="GET" action="{% url 'SearchResult' %}">
+            <input type="text" placeholder="Search" aria-label="Search" name="query">
+            <button type="submit">Search</button>
+          </form>
+      </nav>
+    </header>
+
+    <button onclick="filterPosts('All')">All</button>
+    <button onclick="filterPosts('State')">State</button>
+    <button onclick="filterPosts('News')">News</button>
+    <button onclick="filterPosts('Review')">Review</button>
+
+    <main>
+      <section class="post-list">
+        {% for i in posts %}
+          <div class="post-card" data-category="{{ i.category }}">
+            <div class="post-img">
+              <img src="{{ i.photo.url }}" alt="Post Image">
+            </div>
+            <div class="post-content">
+              <span class="post-category">{{ i.category }}</span>
+              <h2 class="post-title">
+                <a href="PostView?pk={{ i.id }}">{{ i.text }}</a>
+              </h2>
+              <div class="post-meta">{{ i.created_at}}</div>
+              <a href="PostView?pk={{ i.id }}" class="read-more">Continue reading</a>
+            </div>
+          </div>
+        {% endfor %}
+      </section>
+    </main>
+
+<script>
+  function filterPosts(category) {
+    var postCards = document.querySelectorAll('.post-card');
+    for (var i = 0; i < postCards.length; i++) {
+      if (category === 'All' || postCards[i].dataset.category === category) {
+        postCards[i].style.display = 'flex';
+      } else {
+        postCards[i].style.display = 'none';
+      }
+    }
+  }
+</script>
+
+  </body>
+</html>
+

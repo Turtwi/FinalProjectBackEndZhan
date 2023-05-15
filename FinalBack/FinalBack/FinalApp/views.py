@@ -89,6 +89,7 @@ def PostCreation(request):
     return render(request, 'CreatePost.html', {'form': form})
 
 
+
 def PostView(request):
     pk = request.GET.get('pk', None)
     post = Post.objects.get(id=pk)
@@ -112,4 +113,3 @@ def search_results(request):
         Q(category__icontains=query) | Q(text__icontains=query)
     )
     return render(request, 'SearchResult.html', {'posts': posts})
-

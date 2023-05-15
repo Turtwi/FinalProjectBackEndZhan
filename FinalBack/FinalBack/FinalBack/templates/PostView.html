@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PostView</title>
+</head>
+<body>
+    {% load static %}
+    <img style="width: 400px" src="{{ post.photo.url }}"><br>
+    {{ post.text }}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <input type="submit" value="Comment">
+    </form>
+    {% for i in comments %}
+        {{ i.author.username }}
+        {{ i.text }}
+        {{ i.created_at }}
+        <br>
+        <br>
+    {% endfor %}
+</body>
+</html>

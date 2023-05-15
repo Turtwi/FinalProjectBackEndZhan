@@ -1,47 +1,85 @@
-:root{
-    --60Color: #5927E5;
-    --30Color: #F1A9FF;
-    --10Color: #362B48;
-
-}
 *{
-    background-color: var(--60Color);
+    color: #d8d8d8;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-li{
-    color: var(--10Color);
-    background-color: var(--30Color);
-    list-style: none;
-    width: 100%;
-    height: auto;
-    margin: 10px 30px 10px 0;
-    text-align: center;
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #1A1B20;
 }
-li h1{
-    background-color: var(--30Color);
+.main_button{
+    margin-top: 50px;
+    text-transform: uppercase;
+    width: 150px;
+    height: 75px;
+    background-color: #26272C;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    transition: 1s;
+    border-radius: 5px;
 }
-form{
-    background-color: var(--30Color);
-    width: 400px;
-    margin: 10% auto auto;
-    border-radius: 5%;
+.main_button a{
+    text-decoration: none;
+    margin: 0;
+    font-size: 22px;
 }
-ul{
-    width: 60%;
-    height: auto;
-    background-color: var(--30Color);
-    margin: 100px auto auto ;
-    border-radius: 5%;
+.main_button:hover{
+    background-color: #1A1B20;
+}
+.login{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    width: 350px;
+    height: 550px;
+    background-color: #26272C;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 input{
-    color: black;
-    background-color: var(--30Color);
+    margin: 10px;
+    width: 250px;
+    height: 40px;
+    background-color: #1A1B20;
+    text-decoration: none;
+    border: 0;
+    outline: none;
+    border-radius: 5px;
+}
+input[type="text"]{
+    padding-left: 10px;
+}
+.forms{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+ul{
+    list-style: none;
+}
+.login p{
+    color: #d8d8d8;
+    font-size: 22px;
+}
+.button {
+    width: 100px;
+    background-color: #333438;
+    margin-top: 10px;
+    text-transform: uppercase;
+    margin-bottom: 45px;
+    transition: 1s;
+}
+.button:hover{
+    background-color: #1A1B20;
 }
 a{
-    background-color: var(--30Color);
+    margin-top: 5px;
 }
-p{
-    background-color: var(--30Color);
-    font-size: 13px;
-    margin: 0;
-}
-

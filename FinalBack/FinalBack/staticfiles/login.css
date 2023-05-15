@@ -1,0 +1,86 @@
+
+*{
+    color: #d8d8d8;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #1A1B20;
+}
+.main_button{
+    margin-top: 50px;
+    text-transform: uppercase;
+    width: 150px;
+    height: 75px;
+    background-color: #26272C;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    transition: 1s;
+    border-radius: 5px;
+}
+.main_button a{
+    text-decoration: none;
+    margin: 0;
+    font-size: 22px;
+}
+.main_button:hover{
+    background-color: #1A1B20;
+}
+.login{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    width: 350px;
+    height: 400px;
+    background-color: #26272C;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+input{
+    margin-top: 10px;
+    width: 250px;
+    height: 40px;
+    background-color: #1A1B20;
+    text-decoration: none;
+    border: 0;
+    outline: none;
+    border-radius: 5px;
+}
+input[type="text"]{
+    padding-left: 10px;
+}
+.forms{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+ul{
+    list-style: none;
+}
+.login p{
+    color: #d8d8d8;
+    font-size: 22px;
+}
+.button {
+    width: 100px;
+    background-color: #333438;
+    margin-top: 20px;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+    transition: 1s;
+}
+.button:hover{
+    background-color: #1A1B20;
+}
+a{
+    margin-top: 5px;
+}
